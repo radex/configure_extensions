@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.require_paths = ['lib']
 
-  s.add_dependency "xcodeproj", '~> 1.2.0'
+  s.add_dependency "xcodeproj", '~> 1.2'
 
   s.add_development_dependency 'rake'
 end
