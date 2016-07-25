@@ -4,4 +4,38 @@ $:.unshift File.expand_path('../../lib', __FILE__)
 
 require 'configure_extensions'
 
-puts "Hello"
+# Determine passed arguments
+# configure_extensions <mode> <project> <app_target> <extensions...>
+
+# add/remove mode
+mode = ARGV.shift
+
+unless %w(add remove).include? mode
+  ConfigureExtensions::HelpCommand.help
+  exit
+end
+
+# reference to .xcodeproj
+project_file = ARGV.shift
+
+if project_file.nil? || !project_file.end_with?('.xcodeproj')
+  abort "Pass proper Xcode project (.xcodeproj) file"
+end
+
+# main (app) target name
+app_target_name = ARGV.shift
+
+abort "Pass app target name (e.g. 'MyApp')" if app_target_name.nil?
+
+# names of app extension target to add or remove
+extension_names = ARGV
+
+if extension_names.empty?
+  puts "[WARN] No extension names to add/remove were passed"
+  exit
+end
+
+p mode
+p project_file
+p app_target_name
+p extension_names
