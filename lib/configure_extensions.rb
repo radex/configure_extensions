@@ -1,0 +1,1 @@
+require 'configure_extensions/version'
