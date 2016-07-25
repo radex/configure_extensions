@@ -35,7 +35,10 @@ if extension_names.empty?
   exit
 end
 
-p mode
-p project_file
-p app_target_name
-p extension_names
+# execute
+ConfigureExtensions::ConfigureCommand.configure(
+  mode.to_sym,
+  project_file,
+  app_target_name,
+  extension_names
+)
