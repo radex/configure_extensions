@@ -17,7 +17,7 @@ module ConfigureExtensions
       extension_targets = extension_names.map do |ext|
         target = xc.targets.find { |t| t.name == ext }
         abort "Couldn't find a '#{ext}' target in '#{project_name}'" if target.nil?
-        abort "'#{ext}' doesn't seem to be an application extension target" unless target.product_type.include? 'app-extension'
+        abort "'#{ext}' doesn't seem to be an application extension target" unless target.product_type.include?('app-extension') || target.product_type.include?('application.on-demand-install-capable')
         target
       end
 
