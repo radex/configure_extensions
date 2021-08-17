@@ -48,7 +48,7 @@ module ConfigureExtensions
       # Add or remove .appex copy jobs
 
       embed_extensions_phase = app_target.copy_files_build_phases.find do |copy_phase|
-        copy_phase.symbol_dst_subfolder_spec == :plug_ins
+        [:plug_ins, :products_directory].include?(copy_phase.symbol_dst_subfolder_spec)
       end
 
       abort "Couldn't find 'Embed App Extensions' phase" if embed_extensions_phase.nil?
